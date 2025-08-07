@@ -98,15 +98,67 @@ if (contactForm) {
 window.addEventListener('load', () => {
     const loader = document.createElement('div');
     loader.className = 'loader';
-    loader.innerHTML = '<div class="spinner"></div>';
+    loader.innerHTML = `
+        <div class="spinner-container">
+            <div class="spinner"></div>
+            <div class="loader-text">小马畅行</div>
+        </div>
+    `;
     document.body.appendChild(loader);
+
+    // 添加加载动画样式
+    const style = document.createElement('style');
+    style.textContent = `
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        .spinner-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(30, 87, 196, 0.1);
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        .loader-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    `;
+    document.head.appendChild(style);
 
     setTimeout(() => {
         loader.classList.add('hidden');
         setTimeout(() => {
             document.body.removeChild(loader);
         }, 500);
-    }, 1000);
+    }, 1200); // 稍微延长加载动画时间，提升感知质量
 });
 
 // 图片懒加载
