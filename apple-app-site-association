@@ -4,7 +4,7 @@
     "details": [
       {
         "appID": "N933LUHT6F.com.xiaomacx.xiaomacx-ios", 
-        "paths": ["/xiaomacxios/*"] 
+        "paths": ["/xiaomacxios/*", "/miniprogram/*"] 
       }
     ]
   }
