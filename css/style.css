@@ -687,6 +687,20 @@ section > div.container {
     color: rgba(255, 255, 255, 0.7);
 }
 
+.footer-bottom .icp-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: var(--transition);
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.footer-bottom .icp-link:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    text-decoration: underline;
+}
+
 /* 响应式设计 */
 @media (max-width: 992px) {
     .hero .container {
