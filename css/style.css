@@ -385,6 +385,7 @@ nav.navbar > .container {
 .download-btn i {
     font-size: 1.5rem;
     margin-right: 10px;
+    margin-top: 18px;
     color: var(--white-color);
 }
 
