@@ -365,11 +365,11 @@ nav.navbar > .container {
 .download-btn {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 42px;
     background: var(--primary-gradient);
     color: #fff;
     border-radius: var(--radius);
-    padding: 12px 28px;
+    padding: 12px 105px;
     font-weight: 700;
     font-size: 1.1rem;
     box-shadow: var(--shadow);
