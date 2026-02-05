@@ -221,8 +221,8 @@ img {
 }
 
 .hero-bg {
-    position: absolute;
-    right: 0;
+    /* position: absolute; */
+    /* right: 0; */
     height: 640px;
     object-fit: contain;
 }
@@ -731,7 +731,6 @@ img {
 
     .hero-content {
         max-width: 100%;
-        order: 1;
     }
 
     .hero-title {
@@ -748,7 +747,8 @@ img {
 
     .hero-bg {
         width: min(520px, 90vw);
-        order: -1;
+        height: auto;
+        max-height: 400px;
     }
 
     .section-title {
@@ -817,6 +817,7 @@ img {
     }
     .hero-bg {
         width: min(420px, 92vw);
+        max-height: 320px;
     }
 
     .btn {
