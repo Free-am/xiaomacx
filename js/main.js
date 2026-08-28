@@ -1,33 +1,45 @@
-// ===== 导航栏滚动效果 =====
-document.addEventListener('DOMContentLoaded', function() {
-    const navbar = document.querySelector('.navbar');
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+/**
+ * 云雀顺风车官方网站 - 核心交互脚本
+ */
+
+document.addEventListener('DOMContentLoaded', function () {
+    // ===== 1. 导航栏滚动交互与锚点高亮 =====
+    const navbar = document.getElementById('navbar');
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-menu a');
-    const sections = document.querySelectorAll('section[id]');
+    const sections = document.querySelectorAll('section[id], footer[id]');
 
-    // 滚动时添加阴影效果
     function handleScroll() {
-        if (window.scrollY > 50) {
-            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        if (window.scrollY > 30) {
+            navbar.classList.add('scrolled');
         } else {
-            navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            navbar.classList.remove('scrolled');
         }
-
-        // 更新当前活动导航项
         updateActiveNav();
     }
 
-    // 更新当前活动导航项
     function updateActiveNav() {
         const scrollY = window.scrollY;
+        const navHeight = navbar ? navbar.offsetHeight : 70;
+        const isNearBottom = (window.innerHeight + scrollY) >= (document.documentElement.scrollHeight - 60);
+
+        if (isNearBottom) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#footer') {
+                    link.classList.add('active');
+                }
+            });
+            return;
+        }
 
         sections.forEach(section => {
             const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
+            const sectionTop = section.offsetTop - navHeight - 80;
             const sectionId = section.getAttribute('id');
 
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === '#' + sectionId) {
@@ -38,16 +50,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 移动端菜单切换
+    // ===== 2. 移动端汉堡菜单切换 =====
     function toggleMobileMenu() {
         navMenu.classList.toggle('active');
-
-        // 汉堡菜单动画
         const spans = mobileMenuToggle.querySelectorAll('span');
         if (navMenu.classList.contains('active')) {
-            spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+            spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
             spans[1].style.opacity = '0';
-            spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+            spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
         } else {
             spans[0].style.transform = 'none';
             spans[1].style.opacity = '1';
@@ -55,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // 点击导航链接后关闭移动端菜单
     function closeMobileMenu() {
         if (navMenu.classList.contains('active')) {
             navMenu.classList.remove('active');
@@ -66,124 +75,74 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // 平滑滚动到锚点
-    function smoothScroll(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-
-        if (targetSection) {
-            const offsetTop = targetSection.offsetTop - 70; // 减去导航栏高度
-
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-
-            closeMobileMenu();
-        }
-    }
-
-    // 事件监听
-    window.addEventListener('scroll', handleScroll);
-
     if (mobileMenuToggle) {
         mobileMenuToggle.addEventListener('click', toggleMobileMenu);
     }
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', smoothScroll);
-    });
-
-    // 移动端下载卡片 QR 弹窗点击支持
-    const downloadCards = document.querySelectorAll('.download-card');
-    downloadCards.forEach(card => {
-        card.addEventListener('click', function(e) {
-            // 只在移动设备上处理点击（通过触摸事件或屏幕宽度判断）
-            if (window.matchMedia('(max-width: 768px)').matches || 'ontouchstart' in window) {
-                const qrPopup = this.querySelector('.qr-popup');
-                if (qrPopup) {
-                    // 切换当前卡片的弹窗显示状态
-                    const isActive = qrPopup.classList.contains('active');
-
-                    // 先关闭所有其他弹窗
-                    downloadCards.forEach(otherCard => {
-                        const otherPopup = otherCard.querySelector('.qr-popup');
-                        if (otherPopup && otherPopup !== qrPopup) {
-                            otherPopup.classList.remove('active');
-                        }
-                    });
-
-                    // 切换当前弹窗
-                    qrPopup.classList.toggle('active', !isActive);
-                }
-            }
-        });
-    });
-
-    // 点击页面其他地方关闭移动端菜单和 QR 弹窗
-    document.addEventListener('click', function(e) {
-        if (!navbar.contains(e.target) && navMenu.classList.contains('active')) {
+    // 点击页面其他区域关闭移动端菜单
+    document.addEventListener('click', function (e) {
+        if (navbar && !navbar.contains(e.target) && navMenu.classList.contains('active')) {
             closeMobileMenu();
         }
-
-        // 关闭 QR 弹窗（点击在非下载卡片区域）
-        const isClickInsideCard = e.target.closest('.download-card');
-        if (!isClickInsideCard) {
-            downloadCards.forEach(card => {
-                const qrPopup = card.querySelector('.qr-popup');
-                if (qrPopup) {
-                    qrPopup.classList.remove('active');
-                }
-            });
-        }
     });
 
-    // 初始化
-    handleScroll();
-});
-
-// ===== 功能卡片动画 =====
-document.addEventListener('DOMContentLoaded', function() {
-    const featureCards = document.querySelectorAll('.feature-card');
-    const downloadCards = document.querySelectorAll('.download-card');
-
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    function handleIntersect(entries, observer) {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, index * 100);
-                observer.unobserve(entry.target);
+    // ===== 3. 平滑滚动到锚点 =====
+    navLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId.startsWith('#')) {
+                e.preventDefault();
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - (navbar ? navbar.offsetHeight : 60);
+                    window.scrollTo({
+                        top: Math.max(0, offsetTop),
+                        behavior: 'smooth'
+                    });
+                    closeMobileMenu();
+                }
             }
         });
+    });
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    // ===== 4. 元素进场淡入上浮动画 =====
+    const animatedCards = document.querySelectorAll('.cooperation-card');
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('is-visible');
+                    }, 50);
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.05,
+            rootMargin: '100px 0px 50px 0px'
+        });
+
+        animatedCards.forEach(card => {
+            card.classList.add('anim-card');
+            observer.observe(card);
+        });
+
+        // 兜底：1.5秒后确保所有卡片均可见
+        setTimeout(() => {
+            animatedCards.forEach(card => card.classList.add('is-visible'));
+        }, 1500);
+    } else {
+        animatedCards.forEach(card => card.classList.add('is-visible'));
     }
 
-    const observer = new IntersectionObserver(handleIntersect, observerOptions);
-
-    // 初始化动画状态
-    [...featureCards, ...downloadCards].forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(card);
-    });
-});
-
-// ===== 按钮点击反馈 =====
-document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('.btn');
-
-    buttons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            // 创建涟漪效果
+    // ===== 5. 合作申请按钮点击涟漪波纹效果 =====
+    const buttons = document.querySelectorAll('.btn-cooperation-apply');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', function (e) {
             const ripple = document.createElement('span');
             const rect = this.getBoundingClientRect();
             const size = Math.max(rect.width, rect.height);
@@ -199,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 background: rgba(255, 255, 255, 0.3);
                 border-radius: 50%;
                 transform: scale(0);
-                animation: ripple 0.6s ease-out;
+                animation: btnRipple 0.6s ease-out;
                 pointer-events: none;
             `;
 
@@ -210,42 +169,15 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => ripple.remove(), 600);
         });
     });
-});
 
-// 添加涟漪动画样式
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes ripple {
-        to {
-            transform: scale(2);
-            opacity: 0;
+    const styleElem = document.createElement('style');
+    styleElem.textContent = `
+        @keyframes btnRipple {
+            to {
+                transform: scale(2.4);
+                opacity: 0;
+            }
         }
-    }
-`;
-document.head.appendChild(style);
-
-// ===== 图片懒加载 =====
-document.addEventListener('DOMContentLoaded', function() {
-    const lazyImages = document.querySelectorAll('img[data-src]');
-
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-
-        lazyImages.forEach(img => imageObserver.observe(img));
-    } else {
-        // 降级处理
-        lazyImages.forEach(img => {
-            img.src = img.dataset.src;
-            img.removeAttribute('data-src');
-        });
-    }
+    `;
+    document.head.appendChild(styleElem);
 });

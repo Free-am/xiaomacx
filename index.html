@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>云雀顺风车 - 让共享出行更安全更实惠</title>
+    <meta name="description" content="云雀顺风车是由深圳小马畅行科技有限公司运营的共享出行平台，通过智能匹配算法实时连接车主与乘客，提供安全、高效、实惠的共享出行服务。">
+    <meta name="keywords" content="云雀顺风车,顺风车,拼车,共享出行,小马畅行,跨城出行,通勤拼车">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
+
 <body>
     <!-- 导航栏 -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-wrapper">
-                <a href="#" class="logo">
+                <a href="#home" class="logo">
                     <img src="assets/images/logo.png" alt="云雀顺风车">
                 </a>
-                <ul class="nav-menu">
+                <ul class="nav-menu" id="nav-menu">
                     <li><a href="#home" class="active">首页</a></li>
                     <li><a href="#about">关于我们</a></li>
+                    <li><a href="#cooperation">区域出行合作</a></li>
                     <li><a href="#features">功能亮点</a></li>
-                    <li><a href="#download">下载</a></li>
-                    <li><a href="#contact">联系我们</a></li>
+                    <li><a href="#footer">联系我们</a></li>
+                    <li><a href="#footer">客户端下载</a></li>
                 </ul>
-                <button class="mobile-menu-toggle" aria-label="切换菜单">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="切换菜单">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -33,18 +39,14 @@
 
     <!-- Hero 区域 -->
     <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-wrapper">
-                <div class="hero-content">
-                    <img src="assets/images/title-logo.png" alt="云雀顺风车" class="hero-title">
-                    <p class="hero-subtitle">让共享出行更安全更实惠</p>
-                    <p class="hero-desc">云雀顺风车是一款安全、高效、实惠的共享出行平台。</p>
-                    <div class="hero-buttons">
-                        <a href="#download" class="btn btn-primary">立即下载</a>
-                        <a href="#about" class="btn btn-secondary">查看更多</a>
-                    </div>
-                </div>
-                <img src="assets/images/banner.png" alt="应用界面展示" class="hero-bg">
+        <div class="hero-bg-wrapper">
+            <img src="assets/images/header-banner.png" alt="云雀顺风车 绿色出行" class="hero-bg-img">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">云雀顺风车</h1>
+                <p class="hero-subtitle">让共享出行更安全、更实惠</p>
             </div>
         </div>
     </section>
@@ -52,187 +54,194 @@
     <!-- 关于我们 -->
     <section id="about" class="about">
         <div class="container">
-            <div class="section-header">
-                <img src="assets/images/quotation.png" alt="引号" class="quote-icon">
-                <h2 class="section-title">关于我们</h2>
+            <div class="about-card">
+                <h2 class="about-title">关于云雀顺风车</h2>
+                <div class="about-content">
+                    <p>云雀顺风车是由深圳小马畅行科技有限公司运营的共享出行平台，云雀顺风车致力于通过技术创新，为用户提供安全、高效、实惠的出行体验。</p>
+                    <p>云雀顺风车通过智能匹配算法，实时连接车主与乘客，为用户提供便捷经济的共享出行服务。无论是日常通勤、跨城出行，还是节假日返乡，云雀顺风车都能快速响应您的需求，让每一次出行都更轻松实惠！</p>
+                </div>
             </div>
-            <div class="about-content">
-                <p>「云雀顺风车」是由深圳小马畅行科技有限公司运营的共享出行平台，「云雀顺风车」致力于通过技术创新，为用户提供安全、高效、实惠的出行体验。</p>
-                <p>「云雀顺风车」通过智能匹配算法，实时连接车主与乘客，为用户提供便捷经济的共享出行服务。无论是日常通勤、跨城出行，还是节假日返乡，云雀顺风车都能快速响应您的需求，让每一次出行都更轻松实惠！</p>
+        </div>
+    </section>
+
+    <!-- 区域出行合作 -->
+    <section id="cooperation" class="cooperation">
+        <div class="container">
+            <div class="section-header center cooperation-header">
+                <h2 class="section-title">区域出行合作</h2>
+                <div class="title-bar"></div>
+                <p class="section-subtitle">云雀顺风车面向区域/城际出行运力方<br>提供全流程及平台化的线上解决方案，助力行业业务在合规、安全前提下快速高效增长。</p>
+            </div>
+            <div class="cooperation-grid">
+                <div class="cooperation-card">
+                    <div class="cooperation-icon">
+                        <img src="assets/images/icon1.png" alt="平台成熟">
+                    </div>
+                    <div class="cooperation-content">
+                        <div class="cooperation-title-wrap">
+                            <h3 class="cooperation-name">平台成熟</h3>
+                            <span class="cooperation-tag">运营合规化</span>
+                        </div>
+                        <p class="cooperation-desc">资质齐全的全国性顺风车平台，支持业务快速平台化，保障业务长期稳定开展。</p>
+                    </div>
+                </div>
+                <div class="cooperation-card">
+                    <div class="cooperation-icon">
+                        <img src="assets/images/icon2.png" alt="流量支持">
+                    </div>
+                    <div class="cooperation-content">
+                        <div class="cooperation-title-wrap">
+                            <h3 class="cooperation-name">流量支持</h3>
+                            <span class="cooperation-tag">业务高增长</span>
+                        </div>
+                        <p class="cooperation-desc">线上定向推广与本地线下获客相结合，支持小程序、App与管理后台多渠道入口，基于地理位置精准推送区域订单，促进用户及业务快速增长。</p>
+                    </div>
+                </div>
+                <div class="cooperation-card">
+                    <div class="cooperation-icon">
+                        <img src="assets/images/icon3.png" alt="系统完善">
+                    </div>
+                    <div class="cooperation-content">
+                        <div class="cooperation-title-wrap">
+                            <h3 class="cooperation-name">系统完善</h3>
+                            <span class="cooperation-tag">全流程管理</span>
+                        </div>
+                        <p class="cooperation-desc">业务全面线上化处理，快速降本增效。提供成熟的智能匹配、订单流转、支付结算、服务评价与后台管理系统，无需自建团队，即刻拥有高效可靠的技术支撑。</p>
+                    </div>
+                </div>
+                <div class="cooperation-card">
+                    <div class="cooperation-icon">
+                        <img src="assets/images/icon4.png" alt="保险风控">
+                    </div>
+                    <div class="cooperation-content">
+                        <div class="cooperation-title-wrap">
+                            <h3 class="cooperation-name">保险风控</h3>
+                            <span class="cooperation-tag">安全有保障</span>
+                        </div>
+                        <p class="cooperation-desc">建立“行程保险+智能风控”双重保障，线上自动投保驾乘人员意外险，结合行程录音、身份核验及统一客服，守护司乘安全。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cooperation-btn-wrap">
+                <a href="https://wj.qq.com/s2/27635939/fl34/" target="_blank" rel="noopener noreferrer" class="btn-cooperation-apply">
+                    <span>合作申请</span>
+                    <img src="assets/images/icon-arrow.png" alt="申请" class="btn-arrow-icon">
+                </a>
             </div>
         </div>
     </section>
 
     <!-- 功能亮点 -->
     <section id="features" class="features">
-        <div class="container">
-            <h2 class="section-title light">功能亮点</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="assets/images/icon-safe.png" alt="安全保障">
-                    </div>
-                    <h3 class="feature-title">安全保障</h3>
-                    <p class="feature-desc">车主实名认证审核严格，行程全程监控，一键分享行程</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="assets/images/icon-comfort.png" alt="实惠舒适">
-                    </div>
-                    <h3 class="feature-title">实惠舒适</h3>
-                    <p class="feature-desc">价格经济实惠，拼车最多拼一单，保障出行效率与舒适度</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="assets/images/icon-fee.png" alt="费用透明">
-                    </div>
-                    <h3 class="feature-title">费用透明</h3>
-                    <p class="feature-desc">服务费公开透明，车主抽佣全网低价，新车主首月免佣</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="assets/images/icon-convenient.png" alt="便捷高效">
-                    </div>
-                    <h3 class="feature-title">便捷高效</h3>
-                    <p class="feature-desc">界面简洁美观，智能匹配系统，一键发布行程</p>
+        <div class="features-columns">
+            <div class="feature-col">
+                <div class="feature-col-bg" style="background-image: url('assets/images/pic1.png');"></div>
+                <div class="feature-col-overlay"></div>
+                <div class="feature-col-content">
+                    <h3 class="feature-col-title">安全保障</h3>
+                    <div class="feature-col-bar"></div>
+                    <p class="feature-col-desc">车主实名认证审核严格，行程保险及全程录音，一键分享行程</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- 客户端下载 -->
-    <section id="download" class="download">
-        <div class="container">
-            <div class="section-header center">
-                <h2 class="section-title">客户端下载</h2>
-                <p class="section-subtitle">同时支持 iOS、Android、小程序 版本</p>
-            </div>
-            <div class="download-grid">
-                <div class="download-card">
-                    <div class="corner-icon"></div>
-                    <div class="download-icon">
-                        <img src="assets/images/platform-ios.png" alt="iOS">
-                    </div>
-                    <h3 class="download-name">iOS</h3>
-                    <!-- <p class="download-version">版本 0.8.0</p> -->
-                    <div class="qr-popup">
-                        <img src="assets/images/download-ios.png" alt="" class="qr-placeholder">
-                        <span class="qr-text">扫码下载</span>
-                    </div>
-                </div>
-                <div class="download-card">
-                    <div class="corner-icon"></div>
-                    <div class="download-icon android">
-                        <img src="assets/images/platform-Android.png" alt="Android">
-                    </div>
-                    <h3 class="download-name">Android</h3>
-                    <!-- <p class="download-version">版本 0.8.0</p> -->
-                    <div class="qr-popup">
-                        <img src="assets/images/download-android.png" alt="" class="qr-placeholder">
-                        <span class="qr-text">扫码下载</span>
-                    </div>
-                </div>
-                <div class="download-card">
-                    <div class="corner-icon"></div>
-                    <div class="download-icon wechat">
-                        <img src="assets/images/platform-wx.png" alt="微信小程序">
-                    </div>
-                    <h3 class="download-name">微信小程序</h3>
-                    <!-- <p class="download-version">版本 0.8.0</p> -->
-                    <div class="qr-popup">
-                        <img src="assets/images/download-wxmini.png" alt="" class="qr-placeholder">
-                        <span class="qr-text">扫码下载</span>
-                    </div>
+            <div class="feature-col">
+                <div class="feature-col-bg" style="background-image: url('assets/images/pic2.png');"></div>
+                <div class="feature-col-overlay"></div>
+                <div class="feature-col-content">
+                    <h3 class="feature-col-title">实惠舒适</h3>
+                    <div class="feature-col-bar"></div>
+                    <p class="feature-col-desc">价格经济实惠，支持独享及拼单，保障出行效率与舒适度</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- 联系我们 -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-layout">
-                <div class="contact-header">
-                    <h2 class="section-title">联系我们</h2>
+            <div class="feature-col">
+                <div class="feature-col-bg" style="background-image: url('assets/images/pic3.png');"></div>
+                <div class="feature-col-overlay"></div>
+                <div class="feature-col-content">
+                    <h3 class="feature-col-title">费用透明</h3>
+                    <div class="feature-col-bar"></div>
+                    <p class="feature-col-desc">服务费公开透明，车主抽佣全网低价，乘客及车主均享新人优惠</p>
                 </div>
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <span class="label">地址：</span>
-                        <span class="value">深圳市南山区南山云谷创新产业园-2期10栋513</span>
-                    </div>
-                    <div class="contact-item">
-                        <h4>联系电话</h4>
-                        <p>0755-22670736</p>
-                    </div>
-                    <div class="contact-item">
-                        <h4>商务合作</h4>
-                        <p>service@xiaomacx.com</p>
-                    </div>
-                    <div class="contact-item">
-                        <h4>工作时间</h4>
-                        <p>周一至周五: 9:00 - 18:00</p>
-                    </div>
+            </div>
+            <div class="feature-col">
+                <div class="feature-col-bg" style="background-image: url('assets/images/pic4.png');"></div>
+                <div class="feature-col-overlay"></div>
+                <div class="feature-col-content">
+                    <h3 class="feature-col-title">便捷高效</h3>
+                    <div class="feature-col-bar"></div>
+                    <p class="feature-col-desc">界面简洁美观，智能匹配系统，一键发布行程</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 页脚 -->
-    <footer class="footer">
+    <footer class="footer" id="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h4>云雀顺风车</h4>
-                    <ul class="footer-links">
-                        <li><a href="#about">关于我们</a></li>
-                        <li><a href="#features">功能亮点</a></li>
-                        <li><a href="#download">下载</a></li>
-                        <li><a href="#contact">联系我们</a></li>
-                    </ul>
+            <div class="footer-main">
+                <!-- 左侧联系信息 -->
+                <div class="footer-contact">
+                    <div class="footer-contact-row">
+                        <span class="footer-label">联系电话</span>
+                        <span class="footer-value"><a href="tel:0755-22670736">0755-22670736</a></span>
+                    </div>
+                    <div class="footer-contact-row">
+                        <span class="footer-label">地址</span>
+                        <span class="footer-value">深圳市南山区平山一路南山云谷创业园二期</span>
+                    </div>
+                    <div class="footer-contact-row">
+                        <span class="footer-label">商务合作</span>
+                        <span class="footer-value"><a href="mailto:service@xiaomacx.com">service@xiaomacx.com</a></span>
+                    </div>
                 </div>
-                <div class="footer-column">
-                    <h4>用户协议</h4>
-                    <ul class="footer-links">
-                        <li><a href="https://oss.xiaomacx.com/h5/XM_YSZC.html" target="_blank">隐私政策</a></li>
-                        <!-- <li><a href="#">车主招募</a></li> -->
-                        <!-- <li><a href="#">常见问题</a></li> -->
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>关注我们</h4>
+
+                <!-- 中间关注我们 -->
+                <div class="footer-social-col">
+                    <h4 class="footer-col-title">关注我们</h4>
                     <div class="social-icons">
-                        <div class="social-icon">
+                        <div class="social-icon" tabindex="0" aria-label="微信公众号">
                             <img src="assets/images/wxfw.png" alt="微信">
                             <div class="social-qr-popup">
-                                <img src="assets/images/gzh.png" alt="公众号" />
+                                <img src="assets/images/gzh.png" alt="公众号二维码" />
+                                <span>关注官方公众号</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="footer-column">
-                    <h4>客户端下载</h4>
-                    <div class="qr-codes">
-                        <div class="qr-item">
-                            <img src="assets/images/download-ios.png" alt="" class="qr-placeholder-dark">
+
+                <!-- 右侧客户端下载 -->
+                <div class="footer-download-col">
+                    <h4 class="footer-col-title">客户端下载</h4>
+                    <div class="footer-qr-group">
+                        <div class="footer-qr-item">
+                            <div class="footer-qr-box">
+                                <img src="assets/images/download-ios.png" alt="iOS">
+                            </div>
                             <span>iOS</span>
                         </div>
-                        <div class="qr-item">
-                            <img src="assets/images/download-android.png" alt="" class="qr-placeholder-dark">
+                        <div class="footer-qr-item">
+                            <div class="footer-qr-box">
+                                <img src="assets/images/download-android.png" alt="Android">
+                            </div>
                             <span>Android</span>
                         </div>
-                        <div class="qr-item">
-                            <img src="assets/images/download-wxmini.png" alt="" class="qr-placeholder-dark">
+                        <div class="footer-qr-item">
+                            <div class="footer-qr-box">
+                                <img src="assets/images/download-wxmini.png" alt="微信小程序">
+                            </div>
                             <span>微信小程序</span>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>© 2026 深圳小马畅行科技有限公司 版权所有 | <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noopener noreferrer">粤ICP备2025447346号</a></p>
+                <p>© 2026 深圳小马畅行科技有限公司 版权所有 | <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank"
+                        rel="noopener noreferrer">粤ICP备2025447346号</a></p>
+                <p class="footer-license">增值电信业务经营许可证: 粤B2-20262293</p>
             </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
 </body>
+
 </html>
