@@ -802,6 +802,14 @@ img {
         font-size: 22px;
     }
 
+    .features-columns {
+        height: 600px;
+    }
+
+    .feature-col-content {
+        padding: 50px 24px;
+    }
+
     .cooperation-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -836,7 +844,7 @@ img {
 
     .nav-menu {
         position: fixed;
-        top: 70px;
+        top: 64px;
         left: 0;
         right: 0;
         background-color: rgba(18, 23, 29, 0.98);
@@ -891,14 +899,42 @@ img {
     }
 
     .features-columns {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         height: auto;
     }
 
     .feature-col {
-        height: 250px;
-        flex: none;
-        width: 100%;
+        width: 50%;
+        height: 280px;
+        flex: 0 0 50%;
+    }
+
+    .feature-col-overlay {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .feature-col-content {
+        padding: 32px 20px;
+    }
+
+    .feature-col-title {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .feature-col-bar {
+        opacity: 1;
+        transform: scaleX(1);
+        width: 32px;
+        height: 4px;
+        margin: 16px 0 12px;
+    }
+
+    .feature-col-desc {
+        font-size: 14px;
+        line-height: 22px;
+        max-width: 100%;
     }
 
     .section-header {
@@ -1008,5 +1044,29 @@ img {
 
     .cooperation-desc {
         font-size: 13.5px;
+    }
+
+    .feature-col {
+        height: 230px;
+    }
+
+    .feature-col-content {
+        padding: 22px 14px;
+    }
+
+    .feature-col-title {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .feature-col-bar {
+        width: 24px;
+        height: 3px;
+        margin: 10px 0 8px;
+    }
+
+    .feature-col-desc {
+        font-size: 12px;
+        line-height: 18px;
     }
 }
